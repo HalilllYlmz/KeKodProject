@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".presentation.EgoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchEgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:checked="true"
+        android:text="Ego" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchGiving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:checked="false"
+        android:enabled="false"
+        android:text="Giving" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchRespect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:checked="false"
+        android:enabled="false"
+        android:text="Respect" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchKindness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:checked="false"
+        android:enabled="false"
+        android:text="Kindness" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchOptimism"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:checked="false"
+        android:enabled="false"
+        android:text="Optimism" />
+
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchHappiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:checked="false"
+        android:enabled="false"
+
+        android:text="Happiness" />
+
+
+</LinearLayout>
