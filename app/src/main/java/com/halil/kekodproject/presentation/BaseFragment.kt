@@ -1,31 +1,27 @@
-package com.halil.kekodproject.presentation
-
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.halil.kekodproject.R
+import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 
-open class BaseFragment : Fragment() {
+abstract class BaseFragment<T : ViewBinding> : Fragment() {
 
-    var hasInitializedRootView = false
-    private var rootView: View? = null
+    protected var _binding: T? = null
+    protected val binding get() = _binding!!
 
-    fun getPersistentView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?, layout: Int): View? {
-        if (rootView == null) {
-            // Inflate the layout for this fragment
-            rootView = inflater?.inflate(layout,container,false)
-        } else {
-            // Do not inflate the layout again.
-            // The returned View of onCreateView will be added into the fragment.
-            // However it is not allowed to be added twice even if the parent is same.
-            // So we must remove rootView from the existing parent view group
-            // (it will be added back).
-            (rootView?.getParent() as? ViewGroup)?.removeView(rootView)
-        }
+    protected abstract fun inflateBinding(inflater: LayoutInflater, container: ViewGroup?): T
 
-        return rootView
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = inflateBinding(inflater, container)
+        return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
