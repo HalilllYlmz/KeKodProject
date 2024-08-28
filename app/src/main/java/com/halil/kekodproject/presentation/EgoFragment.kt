@@ -6,52 +6,74 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.halil.kekodproject.R
 import com.halil.kekodproject.databinding.FragmentEgoBinding
 
-class EgoFragment : Fragment() {
+class EgoFragment : BaseFragment() {
 
 
-    private var _binding: FragmentEgoBinding? = null
-    private val binding get() = _binding!!
+//    private var _binding: FragmentEgoBinding? = null
+//    private val binding get() = _binding!!
+
+    private lateinit var switchEgo: MaterialSwitch
+    private lateinit var switchKindness: MaterialSwitch
+    private lateinit var switchGiving: MaterialSwitch
+    private lateinit var switchRespect: MaterialSwitch
+    private lateinit var switchOptimism: MaterialSwitch
+    private lateinit var switchHappiness: MaterialSwitch
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentEgoBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+
+
+
+        return getPersistentView(inflater, container, savedInstanceState, R.layout.fragment_ego)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (!hasInitializedRootView) {
+            hasInitializedRootView = true
+//            setListeners()
+//            loadViews()
+        }
+
+        switchEgo = requireActivity().findViewById(R.id.switchEgo)
+        switchKindness = requireActivity().findViewById(R.id.switchKindness)
+        switchGiving = requireActivity().findViewById(R.id.switchGiving)
+        switchRespect = requireActivity().findViewById(R.id.switchRespect)
+        switchOptimism = requireActivity().findViewById(R.id.switchOptimism)
+        switchHappiness = requireActivity().findViewById(R.id.switchHappiness)
 
         var counter = 1
 
         val bottomNavigationView =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView)
 
-        binding.switchEgo.setOnCheckedChangeListener { _, isChecked ->
+        switchEgo.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked) {
                 bottomNavigationView.visibility = View.INVISIBLE
-                binding.switchHappiness.isEnabled = false
-                binding.switchOptimism.isEnabled = false
-                binding.switchRespect.isEnabled = false
-                binding.switchKindness.isEnabled = false
-                binding.switchGiving.isEnabled = false
+                switchHappiness.isEnabled = false
+                switchOptimism.isEnabled = false
+                switchRespect.isEnabled = false
+                switchKindness.isEnabled = false
+                switchGiving.isEnabled = false
             }else {
                 bottomNavigationView.visibility = View.VISIBLE
-                binding.switchHappiness.isEnabled = true
-                binding.switchOptimism.isEnabled = true
-                binding.switchRespect.isEnabled = true
-                binding.switchKindness.isEnabled = true
-                binding.switchGiving.isEnabled = true
+                switchHappiness.isEnabled = true
+                switchOptimism.isEnabled = true
+                switchRespect.isEnabled = true
+                switchKindness.isEnabled = true
+                switchGiving.isEnabled = true
             }
         }
 
-        binding.switchHappiness.setOnCheckedChangeListener { _, isChecked ->
+        switchHappiness.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked && counter < 5) {
                 bottomNavigationView.menu.add(Menu.NONE, R.id.happinessFragment, Menu.NONE, "Happiness")
                     .setIcon(R.drawable.ic_happiness)
@@ -62,7 +84,7 @@ class EgoFragment : Fragment() {
             }
         }
 
-        binding.switchKindness.setOnCheckedChangeListener { _, isChecked ->
+        switchKindness.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked && counter < 5) {
                 bottomNavigationView.menu.add(Menu.NONE, R.id.kindnessFragment, Menu.NONE, "Kindness")
                     .setIcon(R.drawable.ic_kindness)
@@ -73,7 +95,7 @@ class EgoFragment : Fragment() {
             }
         }
 
-        binding.switchGiving.setOnCheckedChangeListener { _, isChecked ->
+        switchGiving.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked && counter < 5) {
                 bottomNavigationView.menu.add(Menu.NONE, R.id.givingFragment, Menu.NONE, "Giving")
                     .setIcon(R.drawable.ic_giving)
@@ -83,7 +105,7 @@ class EgoFragment : Fragment() {
                 counter--
             }
         }
-        binding.switchRespect.setOnCheckedChangeListener { _, isChecked ->
+        switchRespect.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked && counter < 5) {
                 bottomNavigationView.menu.add(Menu.NONE, R.id.respectFragment, Menu.NONE, "Respect")
                     .setIcon(R.drawable.ic_respect)
@@ -93,7 +115,7 @@ class EgoFragment : Fragment() {
                 counter--
             }
         }
-        binding.switchOptimism.setOnCheckedChangeListener { _, isChecked ->
+        switchOptimism.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked && counter < 5) {
                 bottomNavigationView.menu.add(Menu.NONE, R.id.optimisimFragment, Menu.NONE, "Optimism")
                     .setIcon(R.drawable.ic_optimism)
@@ -107,9 +129,5 @@ class EgoFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
 }
