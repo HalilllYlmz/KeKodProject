@@ -2,6 +2,7 @@ package com.halil.kekodproject.presentation
 
 import BaseFragment
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -120,18 +121,22 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
     private fun handleSwitchChange(isChecked: Boolean, menuItemId: Int, title: String, iconResId: Int) {
 
         val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView) ?: return
+        val menuItem = bottomNavigationView.menu.findItem(menuItemId)
 
-        if (isChecked && counter < maxItems) {
-            if (bottomNavigationView.menu.findItem(menuItemId) == null) {
+        if (isChecked) {
+            if (menuItem == null && counter < maxItems) {
                 bottomNavigationView.menu.add(Menu.NONE, menuItemId, Menu.NONE, title).setIcon(iconResId)
                 counter++
-                println("Counter $counter")
+                Log.d("Counter","Counter incremented: $counter")
+            } else if (menuItem == null && counter == maxItems) {
+                Log.d("Counter,""Max items reached. Cannot add more.")
             }
-        }
-        else {
-            bottomNavigationView.menu.removeItem(menuItemId)
-            counter--
-            println("Counter $counter")
+        } else {
+            if (menuItem != null) {
+                bottomNavigationView.menu.removeItem(menuItemId)
+                counter--
+                Log.d("Counter","Counter decremented: $counter")
+            }
         }
     }
 
