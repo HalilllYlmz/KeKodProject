@@ -24,14 +24,12 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Sabit olarak 'EgoFragment' menüye ekle
         val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView)
         if (bottomNavigationView.menu.findItem(R.id.egoFragment) == null) {
             bottomNavigationView.menu.add(Menu.NONE, R.id.egoFragment, Menu.NONE, "Ego")
                 .setIcon(R.drawable.ic_ego) // Uygun bir simge ile değiştirin
         }
 
-        // Diğer switch'lerin durumlarını ayarla
         with(binding) {
             switchEgo.setOnCheckedChangeListener { _, isChecked ->
                 handleSwitchEgoChange(isChecked)
@@ -75,8 +73,7 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
     }
 
     private fun handleSwitchEgoChange(isChecked: Boolean) {
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView)
-            ?: return
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView) ?: return
 
         if (isChecked) {
             bottomNavigationView.visibility = View.INVISIBLE
@@ -129,7 +126,8 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
                 counter++
                 Log.d("Counter","Counter incremented: $counter")
             } else if (menuItem == null && counter == maxItems) {
-                Log.d("Counter,""Max items reached. Cannot add more.")
+                Log.d("Counter,","Max items reached. Cannot add more.")
+                Toast.makeText(requireContext(), "Max items reached. Cannot add more.", Toast.LENGTH_SHORT).show()
             }
         } else {
             if (menuItem != null) {

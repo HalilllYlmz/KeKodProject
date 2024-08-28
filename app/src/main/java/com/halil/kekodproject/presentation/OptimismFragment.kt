@@ -7,14 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.halil.kekodproject.R
-import com.halil.kekodproject.databinding.FragmentKindnessBinding
+import com.halil.kekodproject.databinding.FragmentOptimismBinding
 
-class KindnessFragment : BaseFragment<FragmentKindnessBinding>() {
+class OptimismFragment : BaseFragment<FragmentOptimismBinding>() {
 
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentKindnessBinding {
-        return FragmentKindnessBinding.inflate(inflater, container, false)
+    ): FragmentOptimismBinding {
+        return FragmentOptimismBinding.inflate(inflater, container, false)
     }
 }

@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_respect" />
     <fragment
         android:id="@+id/optimisimFragment"
-        android:name="com.halil.kekodproject.presentation.OptimisimFragment"
+        android:name="com.halil.kekodproject.presentation.OptimismFragment"
         android:label="fragment_optimisim"
-        tools:layout="@layout/fragment_optimisim" />
+        tools:layout="@layout/fragment_optimism" />
 </navigation>
