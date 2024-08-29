@@ -11,20 +11,25 @@ import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.halil.kekodproject.R
 import com.halil.kekodproject.databinding.FragmentEgoBinding
+import com.halil.kekodproject.utilities.Toastic
 
 class EgoFragment : BaseFragment<FragmentEgoBinding>() {
 
     private var counter = 1
     private val maxItems = 5
 
-    override fun inflateBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentEgoBinding {
+    override fun inflateBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentEgoBinding {
         return FragmentEgoBinding.inflate(inflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView)
+        val bottomNavigationView =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView)
         if (bottomNavigationView.menu.findItem(R.id.egoFragment) == null) {
             bottomNavigationView.menu.add(Menu.NONE, R.id.egoFragment, Menu.NONE, "Ego")
                 .setIcon(R.drawable.ic_ego) // Uygun bir simge ile değiştirin
@@ -33,17 +38,27 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
         with(binding) {
             switchEgo.setOnCheckedChangeListener { _, isChecked ->
                 handleSwitchEgoChange(isChecked)
-                if(isChecked) {
+                if (isChecked) {
                     disableSwitches()
                 }
             }
 
             switchHappiness.setOnCheckedChangeListener { _, isChecked ->
-                handleSwitchChange(isChecked, R.id.happinessFragment, "Happiness", R.drawable.ic_happiness)
+                handleSwitchChange(
+                    isChecked,
+                    R.id.happinessFragment,
+                    "Happiness",
+                    R.drawable.ic_happiness
+                )
             }
 
             switchKindness.setOnCheckedChangeListener { _, isChecked ->
-                handleSwitchChange(isChecked, R.id.kindnessFragment, "Kindness", R.drawable.ic_kindness)
+                handleSwitchChange(
+                    isChecked,
+                    R.id.kindnessFragment,
+                    "Kindness",
+                    R.drawable.ic_kindness
+                )
             }
 
             switchGiving.setOnCheckedChangeListener { _, isChecked ->
@@ -51,11 +66,21 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
             }
 
             switchRespect.setOnCheckedChangeListener { _, isChecked ->
-                handleSwitchChange(isChecked, R.id.respectFragment, "Respect", R.drawable.ic_respect)
+                handleSwitchChange(
+                    isChecked,
+                    R.id.respectFragment,
+                    "Respect",
+                    R.drawable.ic_respect
+                )
             }
 
             switchOptimism.setOnCheckedChangeListener { _, isChecked ->
-                handleSwitchChange(isChecked, R.id.optimisimFragment, "Optimism", R.drawable.ic_optimism)
+                handleSwitchChange(
+                    isChecked,
+                    R.id.optimisimFragment,
+                    "Optimism",
+                    R.drawable.ic_optimism
+                )
             }
         }
 
@@ -73,7 +98,8 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
     }
 
     private fun handleSwitchEgoChange(isChecked: Boolean) {
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView) ?: return
+        val bottomNavigationView =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView) ?: return
 
         if (isChecked) {
             bottomNavigationView.visibility = View.INVISIBLE
@@ -115,25 +141,38 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
         }
     }
 
-    private fun handleSwitchChange(isChecked: Boolean, menuItemId: Int, title: String, iconResId: Int) {
+    private fun handleSwitchChange(
+        isChecked: Boolean,
+        menuItemId: Int,
+        title: String,
+        iconResId: Int
+    ) {
 
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView) ?: return
+        val bottomNavigationView =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView) ?: return
         val menuItem = bottomNavigationView.menu.findItem(menuItemId)
 
         if (isChecked) {
             if (menuItem == null && counter < maxItems) {
-                bottomNavigationView.menu.add(Menu.NONE, menuItemId, Menu.NONE, title).setIcon(iconResId)
+                bottomNavigationView.menu.add(Menu.NONE, menuItemId, Menu.NONE, title)
+                    .setIcon(iconResId)
                 counter++
-                Log.d("Counter","Counter incremented: $counter")
+                Log.d("Counter", "Counter incremented: $counter")
             } else if (menuItem == null && counter == maxItems) {
-                Log.d("Counter,","Max items reached. Cannot add more.")
-                Toast.makeText(requireContext(), "Max items reached. Cannot add more.", Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            if (menuItem != null) {
-                bottomNavigationView.menu.removeItem(menuItemId)
-                counter--
-                Log.d("Counter","Counter decremented: $counter")
+                Log.d("Counter,", "Max items reached. Cannot add more.")
+                Toastic.toastic(
+                    context = requireContext(),
+                    message = "Max items reached. Cannot add more !!!",
+                    duration = Toastic.LENGTH_SHORT,
+                    type = Toastic.ERROR,
+                    isIconAnimated = true
+                ).show()
+            } else {
+                if (menuItem != null) {
+                    bottomNavigationView.menu.removeItem(menuItemId)
+                    counter--
+                    Log.d("Counter", "Counter decremented: $counter")
+                }
             }
         }
     }
@@ -149,4 +188,5 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
             outState.putBoolean("switchOptimismState", switchOptimism.isChecked)
         }
     }
+
 }
