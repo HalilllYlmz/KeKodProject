@@ -40,6 +40,7 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
                 handleSwitchEgoChange(isChecked)
                 if (isChecked) {
                     disableSwitches()
+                    removeAllNavItems(bottomNavigationView)
                 }
             }
 
@@ -102,9 +103,9 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView) ?: return
 
         if (isChecked) {
-            bottomNavigationView.visibility = View.INVISIBLE
-            disableSwitches()
             closeSwitch()
+            disableSwitches()
+            bottomNavigationView.visibility = View.INVISIBLE
         } else {
             bottomNavigationView.visibility = View.VISIBLE
             enableSwitches()
@@ -147,7 +148,6 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
         title: String,
         iconResId: Int
     ) {
-
         val bottomNavigationView =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavView) ?: return
         val menuItem = bottomNavigationView.menu.findItem(menuItemId)
@@ -165,17 +165,32 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
                     message = "Max items reached. Cannot add more !!!",
                     duration = Toastic.LENGTH_SHORT,
                     type = Toastic.ERROR,
-                    isIconAnimated = true
+                    isIconAnimated = true,
+                    customBackground = R.drawable.bg_toast_gradient
                 ).show()
-            } else {
-                if (menuItem != null) {
-                    bottomNavigationView.menu.removeItem(menuItemId)
-                    counter--
-                    Log.d("Counter", "Counter decremented: $counter")
-                }
+            }
+        } else {
+            if (menuItem != null) {
+                bottomNavigationView.menu.removeItem(menuItemId)
+                counter--
+                Log.d("Counter", "Counter decremented: $counter")
             }
         }
     }
+
+    private fun removeAllNavItems(bottomNavigationView: BottomNavigationView) {
+        val egoItemId = R.id.egoFragment
+        val menu = bottomNavigationView.menu
+
+        for (i in 0 until menu.size()) {
+            val item = menu.getItem(i)
+            if (item.itemId != egoItemId) {
+                menu.removeItem(item.itemId)
+            }
+        }
+        counter = 1
+    }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -188,5 +203,4 @@ class EgoFragment : BaseFragment<FragmentEgoBinding>() {
             outState.putBoolean("switchOptimismState", switchOptimism.isChecked)
         }
     }
-
 }
