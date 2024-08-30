@@ -17,4 +17,17 @@ class KindnessFragment : BaseFragment<FragmentKindnessBinding>() {
     ): FragmentKindnessBinding {
         return FragmentKindnessBinding.inflate(inflater, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            titleText.alpha = 0f
+            titleText.visibility = View.VISIBLE
+
+            titleText.animate()
+                .alpha(1f)
+                .setDuration(1000)
+                .start()
+        }
+    }
 }
