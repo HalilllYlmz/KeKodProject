@@ -22,11 +22,16 @@ class RespectFragment : BaseFragment<FragmentRespectBinding>() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             titleText.alpha = 0f
+            titleText.scaleX = 0f
+            titleText.scaleY = 0f
+            titleText.rotation = 0f
             titleText.visibility = View.VISIBLE
-
             titleText.animate()
                 .alpha(1f)
-                .setDuration(1000)
+                .scaleX(1f)
+                .scaleY(1f)
+                .rotation(360f)
+                .setDuration(1000) // 1 saniye
                 .start()
         }
     }

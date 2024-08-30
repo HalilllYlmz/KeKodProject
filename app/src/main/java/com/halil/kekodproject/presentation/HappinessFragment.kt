@@ -21,11 +21,10 @@ class HappinessFragment : BaseFragment<FragmentHappinessBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            titleText.alpha = 0f
+            titleText.rotation = 0f
             titleText.visibility = View.VISIBLE
-
             titleText.animate()
-                .alpha(1f)
+                .rotation(360f)
                 .setDuration(1000)
                 .start()
         }
