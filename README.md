@@ -50,3 +50,6 @@ Bu projeyi kendi makinenizde çalıştırmak için aşağıdaki adımları izley
 2. **Switch'lerle Etkileşim:** "Ego" switch'ini kapattıktan sonra diğer switch'leri açarak `BottomNavigationBar`'ı güncelleyebilirsiniz.
 3. **Navigation:** `BottomNavigationBar`'a eklenen item'lara tıklayarak ilgili detay ekranlarına ulaşabilirsiniz.
 
+## Demo Video
+
+[![Demo Video](https://img.youtube.com/vi/wd-VVGRSD_E/0.jpg)](https://www.youtube.com/shorts/wd-VVGRSD_E)
