@@ -39,7 +39,7 @@ Bu projeyi kendi makinenizde çalıştırmak için aşağıdaki adımları izley
 
 1. **Proje Deposu:** Bu projeyi GitHub'dan klonlayın veya indirebilirsiniz:
     ```bash
-    git clone https://github.com/Halilllylmz/KeKodProject
+    git clone https://github.com/HalilllYlmz/KeKodProject
     ```
 2. **Android Studio:** Projeyi Android Studio ile açın.
 3. **Build:** Projeyi build edin ve çalıştırın.
