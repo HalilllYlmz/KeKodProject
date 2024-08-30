@@ -40,6 +40,8 @@ android {
 
 dependencies {
 
+    implementation("com.airbnb.android:lottie:6.5.0")
+
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
