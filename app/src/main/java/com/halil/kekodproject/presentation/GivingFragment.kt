@@ -20,10 +20,8 @@ class GivingFragment : BaseFragment<FragmentGivingBinding>() {
     ): FragmentGivingBinding {
         return FragmentGivingBinding.inflate(inflater, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         with(binding) {
             titleText.visibility = View.VISIBLE
             val colorAnim = ObjectAnimator.ofArgb(
