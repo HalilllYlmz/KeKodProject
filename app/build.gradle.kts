@@ -42,10 +42,18 @@ dependencies {
 
     implementation(libs.lottie)
 
+    // Lifecycle
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.activity.ktx)
+
+    // View Model
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.activity.ktx)
+
     androidTestImplementation(libs.androidx.fragment.testing)
     androidTestImplementation (libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.navigation.testing.v280)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.fragment)

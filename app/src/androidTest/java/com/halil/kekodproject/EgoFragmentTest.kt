@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.halil.kekodproject.presentation.EgoFragment
+import com.halil.kekodproject.presentation.egofragment.EgoFragment
 import org.junit.Before
 import org.junit.Test
 
