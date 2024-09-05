@@ -40,23 +40,16 @@ android {
 
 dependencies {
 
-    implementation("com.airbnb.android:lottie:6.5.0")
+    implementation(libs.lottie)
 
-
-    // Fragment testing
-    androidTestImplementation("androidx.fragment:fragment-testing:1.8.2")
-    // Espresso for UI testing
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.6.1")
-    // AndroidX Test libraries
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    // Navigation testing
-    androidTestImplementation("androidx.navigation:navigation-testing:2.7.7")
-
-
+    androidTestImplementation(libs.androidx.fragment.testing)
+    androidTestImplementation (libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.navigation.testing.v280)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
