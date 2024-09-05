@@ -14,4 +14,5 @@
     <string name="optimism_fragment">Optimism Fragment</string>
     <string name="giving_fragment">Giving Fragment</string>
     <string name="kindness_fragment">Kindness Fragment</string>
+    <string name="star">star</string>
 </resources>

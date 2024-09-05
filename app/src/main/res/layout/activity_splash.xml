@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".SplashActivity">
+
+    <ImageView
+        android:id="@+id/star1"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/clip_star" />
+
+    <ImageView
+        android:id="@+id/star2"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/clip_star" />
+
+    <ImageView
+        android:id="@+id/star3"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/clip_star" />
+
+    <ImageView
+        android:id="@+id/star4"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/clip_star" />
+
+
+</LinearLayout>
